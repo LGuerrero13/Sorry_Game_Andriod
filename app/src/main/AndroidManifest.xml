@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SorryGame">
-        <activity android:name=".Player_setup"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Settings" android:label="Settings"></activity>
+        <activity android:name=".Game_Board" />
+        <activity
+            android:name=".Player_setup"
+            android:label="Player Setup" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Main Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
