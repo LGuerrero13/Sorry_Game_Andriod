@@ -37,7 +37,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 try {
                     int resID = getResources().getIdentifier(tileID, "id", getPackageName());
                     coordinates[X][Y] = (findViewById(resID));
-                    Log.d("ids", tileID);
+                    //Log.d("ids", tileID);
                     coordinates[X][Y].setOnClickListener(this);
                 } catch (Exception e) {
 
@@ -86,17 +86,16 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             while (X < 16) {
                 try {
                     if (coordinates[X][Y].getId() == v.getId()) {
-                        coordinates[X][Y].setImageResource(R.drawable.blackpawn);
+                        //coordinates[X][Y].setImageResource(R.drawable.blackpawn);
                         break;
                     }
                 } catch (Exception e) {
                 }
-
                 X += 1;
             }
             try {
                 if (coordinates[X][Y].getId() == v.getId()) {
-                    coordinates[X][Y].setImageResource(R.drawable.blackpawn);
+                   // coordinates[X][Y].setImageResource(R.drawable.blackpawn);
                     break;
                 }
             } catch (Exception e) {
@@ -120,17 +119,27 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             piece = (String) coordinates[X2][Y2].getTag();
             prey = (String) coordinates[X][Y].getTag();
         }
-        if (turn == "red" && !Pattern.matches("^R.*", prey)) {
-            coordinates[X][Y].setImageResource(R.drawable.blackpawn);
+        if (turn == "red" && !Pattern.matches("^R.*", prey) && piece.equals("RP")) {
+            coordinates[X][Y].setImageResource(R.drawable.redpawn);
             setTile(piece);
         }
-       else if (turn == "yellow" && !Pattern.matches("^Y.*", prey)) {}
-       else if (turn == "green" && !Pattern.matches("^G.*", prey)) {}
-       else if (turn == "blue" && !Pattern.matches("^B.*", prey)) {}
+       else if (turn == "yellow" && !Pattern.matches("^Y.*", prey)&& piece.equals("YP")) {
+            coordinates[X][Y].setImageResource(R.drawable.yellowpawn);
+            setTile(piece);
+        }
+       else if (turn == "green" && !Pattern.matches("^G.*", prey)&& piece.equals("GP")) {
+            coordinates[X][Y].setImageResource(R.drawable.greenpawn);
+            setTile(piece);
+        }
+       else if (turn == "blue" && !Pattern.matches("^B.*", prey)&& piece.equals("BP")) {
+            coordinates[X][Y].setImageResource(R.drawable.bluepawn);
+            setTile(piece);
+        }
     }
 
     public void setTile(String s) {
         //boolean endGame = kingCheck();
+        Log.d("A", "setTile: "+ s);
         coordinates[X][Y].setTag(s);
         coordinates[X2][Y2].setImageDrawable(null);
         coordinates[X2][Y2].setTag(null);
