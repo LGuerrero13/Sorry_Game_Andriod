@@ -2,11 +2,13 @@ package com.example.sorrygame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.view.View.OnClickListener;
 
 import java.util.regex.Pattern;
@@ -15,16 +17,47 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     ImageView[][] coordinates = new ImageView[17][17];
 
+    ImageView[][] starts = new ImageView[5][5];
+
+    String[] letters = new String []{"R","B","Y","G"};
+
+    TextView tvTurn;
+
+    int n = 0;
     int X = 0;
     int Y = 0;
     int X2 = 0;
     int Y2 = 0;
+    String namePR;
+    String namePB;
+    String namePY;
+    String namePG;
+
+    Boolean modeG;
+    Boolean modeY;
+    Boolean modeB;
+    Boolean modeR;
+
     String turn = "red";
     Boolean isSelected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game__board);
+
+        Intent intent = getIntent();
+        namePR = intent.getStringExtra("pR");
+        namePB = intent.getStringExtra("pB");
+        namePY = intent.getStringExtra("pY");
+        namePG = intent.getStringExtra("pG");
+
+        modeG = intent.getBooleanExtra("mG", true);
+        modeY = intent.getBooleanExtra("mY", true);
+        modeB = intent.getBooleanExtra("mB", true);
+        modeR = intent.getBooleanExtra("mR", true);
+
+        tvTurn = findViewById(R.id.tvTurn);
+        tvTurn.setText("turn: " + namePR);
         createBoardVariables();
     }
 
@@ -40,14 +73,22 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                     //Log.d("ids", tileID);
                     coordinates[X][Y].setOnClickListener(this);
                 } catch (Exception e) {
-
                 }
-
                 X += 1;
             }
             // reset x coord
             X = 0;
             Y += 1;
+        }
+        for (int i = 0; i < letters.length; i++) {
+            while (n < 4) {
+                n +=1;
+                tileID = "s" + letters[i] + n;
+                int resID = getResources().getIdentifier(tileID, "id", getPackageName());
+                starts[i][n] = (findViewById(resID));
+                Log.d("start", "createBoardVariables: " + starts[i][n]);
+            }
+            n = 0;
         }
     }
 
@@ -153,14 +194,16 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     public void turnSwitch() {
         if (turn.equals("red")) {
             turn = "blue";
-           // tvTurn.setText("turn: " + namePB);
+            tvTurn.setText("turn: " + namePB);
         } else if (turn.equals("blue")){
             turn = "yellow";
-           // tvTurn.setText("turn: " + namePW);
+            tvTurn.setText("turn: " + namePY);
         } else if (turn.equals("yellow")){
             turn = "green";
+            tvTurn.setText("turn: " + namePG);
         } else if (turn.equals("green")) {
             turn = "red";
+            tvTurn.setText("turn: " + namePR);
         }
     }
 

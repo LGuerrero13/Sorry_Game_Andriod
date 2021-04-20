@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP3"
         android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@id/toggleButton"
+        android:layout_toRightOf="@id/tbPR"
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLength="12"
         android:singleLine="true"
-        android:text="Name" />
+        android:text="Yellow" />
 
     <EditText
         android:id="@+id/etP4"
@@ -25,12 +25,12 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP4"
         android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@id/toggleButton"
+        android:layout_toRightOf="@id/tbPR"
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLength="12"
         android:singleLine="true"
-        android:text="Name" />
+        android:text="Green" />
 
     <EditText
         android:id="@+id/etP2"
@@ -38,15 +38,15 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP2"
         android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@id/toggleButton"
+        android:layout_toRightOf="@id/tbPR"
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLength="12"
         android:singleLine="true"
-        android:text="Name" />
+        android:text="Blue" />
 
     <ToggleButton
-        android:id="@+id/toggleButton4"
+        android:id="@+id/tbPG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP4"
@@ -59,7 +59,7 @@
         android:textOn="Com" />
 
     <ToggleButton
-        android:id="@+id/toggleButton2"
+        android:id="@+id/tbPB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP2"
@@ -72,7 +72,7 @@
         android:textOn="Com" />
 
     <ToggleButton
-        android:id="@+id/toggleButton3"
+        android:id="@+id/tbPY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP3"
@@ -124,7 +124,7 @@
         android:text="Player 1" />
 
     <ToggleButton
-        android:id="@+id/toggleButton"
+        android:id="@+id/tbPR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP1"
@@ -142,29 +142,29 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tvP1"
         android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@id/toggleButton"
+        android:layout_toRightOf="@id/tbPR"
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLength="12"
         android:singleLine="true"
-        android:text="Name" />
+        android:text="Red" />
 
     <Button
         android:id="@+id/btnStartGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toggleButton4"
+        android:layout_below="@id/tbPG"
         android:layout_marginTop="30dp"
-        android:layout_toRightOf="@id/toggleButton4"
+        android:layout_toRightOf="@id/tbPG"
         android:text="Start Game" />
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toggleButton4"
+        android:layout_below="@id/tbPG"
         android:layout_marginTop="30dp"
-        android:layout_toLeftOf="@id/toggleButton4"
+        android:layout_toLeftOf="@id/tbPG"
         android:text="Back" />
 
 </RelativeLayout>
