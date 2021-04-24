@@ -12,7 +12,8 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
         android:layout_alignLeft="@id/x6y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@android:drawable/btn_dialog"
+        android:layout_alignStart="@id/x6y0" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -20,7 +21,8 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
         android:layout_alignLeft="@id/x6y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@android:drawable/btn_dialog"
+        android:layout_alignStart="@id/x6y0" />
 
     <ImageView
         android:id="@+id/x15y14"
@@ -117,7 +119,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
         android:layout_alignLeft="@id/x13y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
         android:id="@+id/sG1"
@@ -125,7 +127,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
         android:layout_alignLeft="@id/x14y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
         android:id="@+id/sG4"
@@ -133,7 +135,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y4"
         android:layout_alignLeft="@id/x13y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
         android:id="@+id/sG2"
@@ -141,7 +143,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y4"
         android:layout_alignLeft="@id/x14y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
         android:id="@+id/x15y3"
@@ -307,7 +309,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y9"
         android:layout_alignLeft="@id/x1y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
         android:id="@+id/sB2"
@@ -315,7 +317,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y9"
         android:layout_alignLeft="@id/x2y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
         android:id="@+id/x0y11"
@@ -331,7 +333,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
         android:layout_alignLeft="@id/x1y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
         android:id="@+id/sB4"
@@ -339,7 +341,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
         android:layout_alignLeft="@id/x2y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
         android:id="@+id/x0y12"
@@ -525,7 +527,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y13"
         android:layout_toRightOf="@id/x10y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/redpawn" />
 
     <ImageView
         android:id="@+id/sR1"
@@ -533,7 +535,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y13"
         android:layout_toRightOf="@id/x9y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/redpawn" />
 
     <ImageView
         android:id="@+id/sR3"
@@ -541,7 +543,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y14"
         android:layout_toRightOf="@id/x9y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/redpawn" />
 
     <ImageView
         android:id="@+id/sR4"
@@ -549,7 +551,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y14"
         android:layout_toRightOf="@id/x10y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/redpawn" />
 
     <ImageView
         android:id="@+id/x10y15"
@@ -763,7 +765,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y1"
         android:layout_toRightOf="@id/x3y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
         android:id="@+id/sY2"
@@ -771,7 +773,8 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y1"
         android:layout_toRightOf="@id/x4y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        android:tag="YP"
+        app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
         android:id="@+id/sY3"
@@ -779,7 +782,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"
         android:layout_toRightOf="@id/x3y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
         android:id="@+id/sY4"
@@ -787,7 +790,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"
         android:layout_toRightOf="@id/x4y0"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
         android:id="@+id/x5y0"
@@ -882,10 +885,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/x0y15"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="100dp"
         android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnRoll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tvTurn"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@id/tvTurn"
+        android:text="Roll" />
+
+    <ImageView
+        android:id="@+id/ivDie1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/btnRoll"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/one"
+        android:layout_alignStart="@id/btnRoll"
+        android:layout_alignLeft="@id/btnRoll" />
+
+    <ImageView
+        android:id="@+id/ivDie2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/btnRoll"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@id/ivDie1"
+        android:layout_toRightOf="@id/ivDie1"
+        app:srcCompat="@drawable/one" />
 
 
 </RelativeLayout>
