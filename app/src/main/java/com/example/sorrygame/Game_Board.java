@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -97,6 +98,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             endX = 0;
             endY += 1;
         }
+        deleteStart();
         for (int i = 0; i < letters.length; i++) {
             while (n < 4) {
                 n +=1;
@@ -108,6 +110,13 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             }
             n = 0;
         }
+    }
+
+    private void deleteStart() {
+        coordinates[11][14].setOnClickListener(null);
+        coordinates[4][1].setOnClickListener(null);
+        coordinates[1][11].setOnClickListener(null);
+        coordinates[14][4].setOnClickListener(null);
     }
 
     @Override
@@ -122,10 +131,12 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             if (isSelected) {
                 if (coordinates[endX][endY] != coordinates[startX][startY]) {
                     whichPiece();
+                    Log.d("ugh", "endX "+endX +" endY "+endY+" startX "+startX+" startY "+startY);
                 }
             } else {
                 startX = endX;
                 startY = endY;
+                Log.d("ugh", "endX "+endX +" endY "+endY+" startX "+startX+" startY "+startY);
             }
             selectionStateSwitch();
         }
@@ -173,14 +184,13 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     public void selectionStateSwitch() {
         if (isSelected) {
             isSelected = false;
-            coordinates[startX][startY].setColorFilter(null);
+           // coordinates[startX][startY].setColorFilter(null);
            // removeTint();
         } else {
             isSelected = true;
-            coordinates[endX][endY].setColorFilter(Color.GREEN);
+            //coordinates[endX][endY].setColorFilter(Color.GREEN);
             //tintLegal();
         }
-
     }
 
     public int difference() {
@@ -194,8 +204,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         // add indicator on game board for what each roll does
         legalMove = false;
         int diff = difference();
+
         // set roll value for debug, remove later
-        Roll = 12;
+       // Roll = 12;
         switch (Roll){
             case 2:
                 // Move pawn 2 spaces
@@ -313,34 +324,56 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     private boolean startCheck(View v) {
-        endY=0;
-        endX=0;
-        while (endY < 4) {
-            while (endX < 4) {
-                endX +=1;
-                if (starts[endY][endX].getId() == v.getId()) {
+      int  Y=0;
+       int X=0;
+        while (Y < 4) {
+            while (X < 4) {
+                X +=1;
+                if (starts[Y][X].getId() == v.getId()) {
                     break;
                 }
             }
-            if (starts[endY][endX].getId() == v.getId()) {
+            if (starts[Y][X].getId() == v.getId()) {
                 break;
             }
-            endX = 0;
-            endY += 1;
+           X = 0;
+           Y += 1;
         }
-        if (turn == "red" && endY == 0){
-
+        if (turn == "red" && Y == 0){
+            endY = 14;
+            endX = 11;
+            hopper(X, Y);
             return true;
-        } else if (turn == "blue" && endY == 1){
+        } else if (turn == "blue" && Y == 1){
+            endY = 11;
+            endX = 1;
+            hopper(X, Y);
             return true;
-        } else if (turn == "yellow" && endY == 2){
+        } else if (turn == "yellow" && Y == 2){
+            endY = 1;
+            endX = 4;
+            hopper(X, Y);
             return true;
-        } else if (turn == "green" && endY == 3){
+        } else if (turn == "green" && Y == 3){
+            endY = 4;
+            endX = 14;
+            hopper(X, Y);
             return true;
         } else {
             return false;
         }
 
+    }
+
+    private void hopper(int X, int Y){
+      Object startTag = starts[Y][X].getTag();
+      Drawable startDraw = starts[Y][X].getDrawable();
+      Object queueTag = coordinates[endX][endY].getTag();
+      Drawable queueDraw = coordinates[endX][endY].getDrawable();
+      starts[Y][X].setImageDrawable(queueDraw);
+      starts[Y][X].setTag(queueTag);
+      coordinates[endX][endY].setImageDrawable(startDraw);
+      coordinates[endX][endY].setTag(startTag);
     }
 
     public void whichTile(View v) {

@@ -119,6 +119,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
         android:layout_alignLeft="@id/x13y0"
+        android:tag="GP"
         app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
@@ -127,7 +128,16 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
         android:layout_alignLeft="@id/x14y0"
+        android:tag="GP"
         app:srcCompat="@drawable/greenpawn" />
+
+    <ImageView
+        android:id="@+id/x14y4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/x0y3"
+        android:translationZ="-1dp"
+        android:layout_alignLeft="@id/x14y0" />
 
     <ImageView
         android:id="@+id/sG4"
@@ -135,6 +145,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y4"
         android:layout_alignLeft="@id/x13y0"
+        android:tag="GP"
         app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
@@ -143,6 +154,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y4"
         android:layout_alignLeft="@id/x14y0"
+        android:tag="GP"
         app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
@@ -309,6 +321,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y9"
         android:layout_alignLeft="@id/x1y0"
+        android:tag="BP"
         app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
@@ -317,6 +330,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y9"
         android:layout_alignLeft="@id/x2y0"
+        android:tag="BP"
         app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
@@ -333,7 +347,16 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
         android:layout_alignLeft="@id/x1y0"
+        android:tag="BP"
         app:srcCompat="@drawable/bluepawn" />
+
+    <ImageView
+        android:id="@+id/x1y11"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/x0y10"
+        android:layout_alignLeft="@id/x1y0"
+        android:translationZ="-1dp"/>
 
     <ImageView
         android:id="@+id/sB4"
@@ -341,6 +364,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
         android:layout_alignLeft="@id/x2y0"
+        android:tag="BP"
         app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
@@ -517,9 +541,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x10y0"
-        android:tag="RP"
-        app:srcCompat="@drawable/redpawn" />
+        android:layout_toRightOf="@id/x10y0" />
 
     <ImageView
         android:id="@+id/sR2"
@@ -527,6 +549,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y13"
         android:layout_toRightOf="@id/x10y0"
+        android:tag="RP"
         app:srcCompat="@drawable/redpawn" />
 
     <ImageView
@@ -535,6 +558,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y13"
         android:layout_toRightOf="@id/x9y0"
+        android:tag="RP"
         app:srcCompat="@drawable/redpawn" />
 
     <ImageView
@@ -543,6 +567,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y14"
         android:layout_toRightOf="@id/x9y0"
+        android:tag="RP"
         app:srcCompat="@drawable/redpawn" />
 
     <ImageView
@@ -551,7 +576,16 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y14"
         android:layout_toRightOf="@id/x10y0"
+        android:tag="RP"
         app:srcCompat="@drawable/redpawn" />
+
+    <ImageView
+        android:id="@+id/x11y14"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@id/x0y14"
+        android:layout_toRightOf="@id/x10y0"
+        android:translationZ="-1dp"/>
 
     <ImageView
         android:id="@+id/x10y15"
@@ -765,7 +799,16 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y1"
         android:layout_toRightOf="@id/x3y0"
+        android:tag="YP"
         app:srcCompat="@drawable/yellowpawn" />
+
+    <ImageView
+        android:id="@+id/x4y1"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@id/x0y1"
+        android:layout_toRightOf="@id/x3y0"
+        android:translationZ="-1dp"/>
 
     <ImageView
         android:id="@+id/sY2"
@@ -782,6 +825,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"
         android:layout_toRightOf="@id/x3y0"
+        android:tag="YP"
         app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
@@ -790,6 +834,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"
         android:layout_toRightOf="@id/x4y0"
+        android:tag="YP"
         app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
