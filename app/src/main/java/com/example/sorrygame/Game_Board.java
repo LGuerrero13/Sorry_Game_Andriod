@@ -34,10 +34,10 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     Boolean Rolled = false;
 
     int n = 0;
-    int X = 0;
-    int Y = 0;
-    int X2 = 0;
-    int Y2 = 0;
+    int endX = 0;
+    int endY = 0;
+    int startX = 0;
+    int startY = 0;
     String namePR;
     String namePB;
     String namePY;
@@ -80,22 +80,22 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     public void createBoardVariables() {
         String tileID;
-        while (Y < 16) {
-            while (X < 16) {
-                tileID = "x" + X + "y" + Y;
+        while (endY < 16) {
+            while (endX < 16) {
+                tileID = "x" + endX + "y" + endY;
                 // create ref variables to imageviews
                 try {
                     int resID = getResources().getIdentifier(tileID, "id", getPackageName());
-                    coordinates[X][Y] = (findViewById(resID));
+                    coordinates[endX][endY] = (findViewById(resID));
                     //Log.d("ids", tileID);
-                    coordinates[X][Y].setOnClickListener(this);
+                    coordinates[endX][endY].setOnClickListener(this);
                 } catch (Exception e) {
                 }
-                X += 1;
+                endX += 1;
             }
             // reset x coord
-            X = 0;
-            Y += 1;
+            endX = 0;
+            endY += 1;
         }
         for (int i = 0; i < letters.length; i++) {
             while (n < 4) {
@@ -103,7 +103,8 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 tileID = "s" + letters[i] + n;
                 int resID = getResources().getIdentifier(tileID, "id", getPackageName());
                 starts[i][n] = (findViewById(resID));
-                Log.d("start", "createBoardVariables: " + starts[i][n]);
+                Log.d("start", "createBoardVariables: " + starts[i][n] + " " + i + " " + n);
+                starts[i][n].setOnClickListener(this);
             }
             n = 0;
         }
@@ -119,12 +120,12 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         else {
             whichTile(view);
             if (isSelected) {
-                if (coordinates[X][Y] != coordinates[X2][Y2]) {
+                if (coordinates[endX][endY] != coordinates[startX][startY]) {
                     whichPiece();
                 }
             } else {
-                X2 = X;
-                Y2 = Y;
+                startX = endX;
+                startY = endY;
             }
             selectionStateSwitch();
         }
@@ -172,11 +173,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     public void selectionStateSwitch() {
         if (isSelected) {
             isSelected = false;
-            coordinates[X2][Y2].setColorFilter(null);
+            coordinates[startX][startY].setColorFilter(null);
            // removeTint();
         } else {
             isSelected = true;
-            coordinates[X][Y].setColorFilter(Color.GREEN);
+            coordinates[endX][endY].setColorFilter(Color.GREEN);
             //tintLegal();
         }
 
@@ -184,15 +185,17 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     public int difference() {
         int difference = 0;
-        difference += abs(X - X2);
-        difference += abs(Y - Y2);
+        difference += abs(endX - startX);
+        difference += abs(endY - startY);
         return difference;
     }
 
     public void rulesSwitch() {
-        // add indicator on gameboard for what each roll does
+        // add indicator on game board for what each roll does
         legalMove = false;
         int diff = difference();
+        // set roll value for debug, remove later
+        Roll = 12;
         switch (Roll){
             case 2:
                 // Move pawn 2 spaces
@@ -241,41 +244,134 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 // code for moving out of start
                 break;
             case 10:
-                //  die.setImageResource(R.drawable.four);
+                //  forward 10 or back 1-3
+                if (diff == 10 && !isMovingBack()){
+                    legalMove = true;
+                } else if (diff <= 3 && isMovingBack()) {
+                    legalMove = true;
+                }
                 break;
             case 11:
-                // die.setImageResource(R.drawable.five);
+                // forward 11 spaces or swap pos with opponent
+                if (diff == 11) {
+                    legalMove = true;
+                }
+                else if (coordinates[endX][endY].getTag() != null) {
+                    legalMove = true;
+                }
                 break;
             case 12:
+                if (coordinates[endX][endY].getTag() != null) {
+                    legalMove = true;
+                }
                 //die.setImageResource(R.drawable.six);
                 break;
         }
+        Log.d("sigh", "rulesSwitch: legalMove = " + legalMove);
+    }
+
+    //check if moving backward
+    public boolean isMovingBack() {
+        boolean backwards = false;
+        int diffX = endX - startX;
+        int diffY = endY- startY;
+            if (startX == 0){
+                if (diffY > 0){
+                    backwards = true;
+                } else if (startY == 15 && diffX > 0) {
+                    backwards = true;
+                } else {
+                    backwards = false;
+                }
+            } else if (startX == 15){
+                if (diffY < 0){
+                    backwards = true;
+                } else if (startY == 0 && diffX < 0) {
+                    backwards = true;
+                } else {
+                    backwards = false;
+                }
+            } else if (startY == 15){
+                if (diffX > 0){
+                    backwards = true;
+                } else if (startX == 15 && diffY < 0) {
+                    backwards = true;
+                } else {
+                    backwards = false;
+                }
+            } else if (startY == 0){
+                if (diffX < 0){
+                    backwards = true;
+                } else if (startX == 0 && diffY > 0) {
+                    backwards = true;
+                } else {
+                    backwards = false;
+                }
+            }
+        Log.d("moveCheck", "isMovingBack: " + backwards);
+        return backwards;
+    }
+
+    private boolean startCheck(View v) {
+        endY=0;
+        endX=0;
+        while (endY < 4) {
+            while (endX < 4) {
+                endX +=1;
+                if (starts[endY][endX].getId() == v.getId()) {
+                    break;
+                }
+            }
+            if (starts[endY][endX].getId() == v.getId()) {
+                break;
+            }
+            endX = 0;
+            endY += 1;
+        }
+        if (turn == "red" && endY == 0){
+
+            return true;
+        } else if (turn == "blue" && endY == 1){
+            return true;
+        } else if (turn == "yellow" && endY == 2){
+            return true;
+        } else if (turn == "green" && endY == 3){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public void whichTile(View v) {
-        Y=0;
-        X=0;
-        while (Y < 16) {
-            while (X < 16) {
+        // iterating through start tiles
+        if (startCheck(v)) {
+            return;
+        }
+        // iterating through standard play tiles
+        endY=0;
+        endX=0;
+        while (endY < 16) {
+            while (endX < 16) {
                 try {
-                    if (coordinates[X][Y].getId() == v.getId()) {
-                        //coordinates[X][Y].setImageResource(R.drawable.blackpawn);
+                    if (coordinates[endX][endY].getId() == v.getId()) {
+                        //coordinates[endX][endY].setImageResource(R.drawable.blackpawn);
                         break;
                     }
                 } catch (Exception e) {
                 }
-                X += 1;
+                endX += 1;
             }
             try {
-                if (coordinates[X][Y].getId() == v.getId()) {
-                   // coordinates[X][Y].setImageResource(R.drawable.blackpawn);
+                if (coordinates[endX][endY].getId() == v.getId()) {
+                   // coordinates[endX][endY].setImageResource(R.drawable.blackpawn);
                     break;
                 }
             } catch (Exception e) {
             }
-            // reset X coord
-            X = 0;
-            Y += 1;
+            // reset endX coord
+            endX = 0;
+            endY += 1;
         }
     }
 
@@ -285,59 +381,89 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         String piece;
         String prey;
         Boolean Legal;
-        if (coordinates[X2][Y2].getTag() == null) {
+        if (legalMove == false){
+            return;
+        }
+        if (coordinates[startX][startY].getTag() == null) {
             piece = "";
             prey = "";
-        } else if (coordinates[X][Y].getTag() == null) {
+        } else if (coordinates[endX][endY].getTag() == null) {
             prey = "";
-            piece = (String) coordinates[X2][Y2].getTag();
+            piece = (String) coordinates[startX][startY].getTag();
         } else {
-            piece = (String) coordinates[X2][Y2].getTag();
-            prey = (String) coordinates[X][Y].getTag();
+            piece = (String) coordinates[startX][startY].getTag();
+            prey = (String) coordinates[endX][endY].getTag();
         }
         if (turn == "red" && !Pattern.matches("^R.*", prey) && piece.equals("RP") && legalMove) {
-            coordinates[X][Y].setImageResource(R.drawable.redpawn);
-            setTile(piece);
+            if (!swap(piece)){
+                setTile(piece);
+            }
+            coordinates[endX][endY].setImageResource(R.drawable.redpawn);
         }
        else if (turn == "yellow" && !Pattern.matches("^Y.*", prey)&& piece.equals("YP") && legalMove) {
-            coordinates[X][Y].setImageResource(R.drawable.yellowpawn);
-            setTile(piece);
+            if (!swap(piece)){
+                setTile(piece);
+            }
+            coordinates[endX][endY].setImageResource(R.drawable.yellowpawn);
         }
        else if (turn == "green" && !Pattern.matches("^G.*", prey)&& piece.equals("GP") && legalMove) {
-            coordinates[X][Y].setImageResource(R.drawable.greenpawn);
-            setTile(piece);
+            if (!swap(piece)){
+                setTile(piece);
+            }
+            coordinates[endX][endY].setImageResource(R.drawable.greenpawn);
         }
        else if (turn == "blue" && !Pattern.matches("^B.*", prey)&& piece.equals("BP") && legalMove) {
-            coordinates[X][Y].setImageResource(R.drawable.bluepawn);
-            setTile(piece);
+            if (!swap(piece)){
+                setTile(piece);
+            }
+            coordinates[endX][endY].setImageResource(R.drawable.bluepawn);
+        }
+    }
+
+    private boolean swap(String s) {
+        if (Roll == 11 && !(11 == difference())) {
+            coordinates[startX][startY].setImageDrawable(coordinates[endX][endY].getDrawable());
+            String tag = (String) coordinates[endX][endY].getTag();
+            coordinates[endX][endY].setTag(s);
+            coordinates[startX][startY].setTag(tag);
+            turnSwitch();
+            return true;
+        } else if (Roll == 12) {
+            starts[startY][startX].setImageDrawable(null);
+            starts[startY][startX].setTag(null);
+            coordinates[endX][endY].setTag(s);
+            turnSwitch();
+            return true;
+        } else {
+            return false;
         }
     }
 
     public void homeCancel() {
         switch (turn) {
             case "red":
-                if (X >=13 && X2 < 13){
+                if (endX >=13 && startX < 13){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
                     }
                 }
                 break;
             case "blue":
-                if (Y >=13 && Y2 < 13){
+                if (endY >=13 && startY < 13){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
                     }
                 }
                 break;
             case "yellow":
-                if (X <=2 && X2 > 2){
+                if (endX <2 && startX > 2){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
                     }
                 }
                 break;
             case "green":
-                if (Y <=2 && Y2 > 2){
+                if (endY <=2 && startY > 2){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
                     }
@@ -347,16 +473,14 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     public void setTile(String s) {
-        //boolean endGame = kingCheck();
         Log.d("A", "setTile: "+ s);
-        coordinates[X][Y].setTag(s);
-        coordinates[X2][Y2].setImageDrawable(null);
-        coordinates[X2][Y2].setTag(null);
+        coordinates[endX][endY].setTag(s);
+        coordinates[startX][startY].setImageDrawable(null);
+        coordinates[startX][startY].setTag(null);
        //if (endGame == true){
            // gameEnd();
         //} else {
-            turnSwitch();
-      //  }
+        turnSwitch();
     }
 
     public void turnSwitch() {
