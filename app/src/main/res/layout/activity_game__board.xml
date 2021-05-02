@@ -110,8 +110,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
         android:layout_alignLeft="@id/x15y0"
-        android:tag="GP"
-        app:srcCompat="@drawable/greenpawn" />
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
         android:id="@+id/sG3"
@@ -123,24 +122,17 @@
         app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
-        android:id="@+id/sG1"
+        android:id="@+id/x14y4"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
         android:layout_alignLeft="@id/x14y0"
         android:tag="GP"
+        android:translationZ="-1dp"
         app:srcCompat="@drawable/greenpawn" />
 
     <ImageView
-        android:id="@+id/x14y4"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_below="@id/x0y3"
-        android:translationZ="-1dp"
-        android:layout_alignLeft="@id/x14y0" />
-
-    <ImageView
-        android:id="@+id/sG4"
+        android:id="@+id/sG1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y4"
@@ -285,7 +277,10 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y5"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        android:background="@android:drawable/btn_dialog"
+        android:tag="BP"
+        app:srcCompat="@android:drawable/btn_dialog"
+        tools:srcCompat="@drawable/bluepawn" />
 
     <ImageView
         android:id="@+id/x0y7"
@@ -339,16 +334,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
         android:tag="BP"
-        app:srcCompat="@drawable/bluepawn" />
-
-    <ImageView
-        android:id="@+id/sB3"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_below="@id/x0y10"
-        android:layout_alignLeft="@id/x1y0"
-        android:tag="BP"
-        app:srcCompat="@drawable/bluepawn" />
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
         android:id="@+id/x1y11"
@@ -356,10 +342,12 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
         android:layout_alignLeft="@id/x1y0"
-        android:translationZ="-1dp"/>
+        android:tag="BP"
+        android:translationZ="-1dp"
+        app:srcCompat="@drawable/bluepawn" />
 
     <ImageView
-        android:id="@+id/sB4"
+        android:id="@+id/sB3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
@@ -571,21 +559,14 @@
         app:srcCompat="@drawable/redpawn" />
 
     <ImageView
-        android:id="@+id/sR4"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignTop="@id/x0y14"
-        android:layout_toRightOf="@id/x10y0"
-        android:tag="RP"
-        app:srcCompat="@drawable/redpawn" />
-
-    <ImageView
         android:id="@+id/x11y14"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y14"
         android:layout_toRightOf="@id/x10y0"
-        android:translationZ="-1dp"/>
+        android:tag="RP"
+        android:translationZ="-1dp"
+        app:srcCompat="@drawable/redpawn" />
 
     <ImageView
         android:id="@+id/x10y15"
@@ -790,17 +771,7 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
         android:layout_toRightOf="@id/x3y0"
-        android:tag="YP"
-        app:srcCompat="@drawable/yellowpawn" />
-
-    <ImageView
-        android:id="@+id/sY1"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignTop="@id/x0y1"
-        android:layout_toRightOf="@id/x3y0"
-        android:tag="YP"
-        app:srcCompat="@drawable/yellowpawn" />
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
         android:id="@+id/x4y1"
@@ -808,7 +779,9 @@
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y1"
         android:layout_toRightOf="@id/x3y0"
-        android:translationZ="-1dp"/>
+        android:tag="YP"
+        android:translationZ="-1dp"
+        app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
         android:id="@+id/sY2"
@@ -829,7 +802,7 @@
         app:srcCompat="@drawable/yellowpawn" />
 
     <ImageView
-        android:id="@+id/sY4"
+        android:id="@+id/sY1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"

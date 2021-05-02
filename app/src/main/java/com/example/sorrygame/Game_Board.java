@@ -98,9 +98,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             endX = 0;
             endY += 1;
         }
-        deleteStart();
+     //   deleteStart();
         for (int i = 0; i < letters.length; i++) {
-            while (n < 4) {
+            while (n < 3) {
                 n +=1;
                 tileID = "s" + letters[i] + n;
                 int resID = getResources().getIdentifier(tileID, "id", getPackageName());
@@ -110,13 +110,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             }
             n = 0;
         }
-    }
-
-    private void deleteStart() {
-        coordinates[11][14].setOnClickListener(null);
-        coordinates[4][1].setOnClickListener(null);
-        coordinates[1][11].setOnClickListener(null);
-        coordinates[14][4].setOnClickListener(null);
     }
 
     @Override
@@ -155,7 +148,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             getRoll();
         }
        // Rolled = true;
-
     }
 
     public void DieSwitch(int num, ImageView die) {
@@ -204,9 +196,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         // add indicator on game board for what each roll does
         legalMove = false;
         int diff = difference();
-
+        //if (!Rolled){
+         //   return;
+     //   }
         // set roll value for debug, remove later
-       // Roll = 12;
+       //Roll = 12;
         switch (Roll){
             case 2:
                 // Move pawn 2 spaces
@@ -272,7 +266,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 }
                 break;
             case 12:
-                if (coordinates[endX][endY].getTag() != null) {
+                if (startCheck()) {
                     legalMove = true;
                 }
                 //die.setImageResource(R.drawable.six);
@@ -281,12 +275,26 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         Log.d("sigh", "rulesSwitch: legalMove = " + legalMove);
     }
 
+    private boolean startCheck(){
+        if (turn == "red" && (startX == 11 && startY == 14)){
+            return true;
+        } else if (turn == "blue" && (startX == 1 && startY == 11)){
+            return true;
+        } else if (turn == "yellow" && (startX == 4 && startY == 1)){
+            return true;
+        } else if (turn == "green" && (startX == 14 && startY == 4)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //check if moving backward
     public boolean isMovingBack() {
         boolean backwards = false;
         int diffX = endX - startX;
         int diffY = endY- startY;
-            if (startX == 0){
+            if (startX == 0 || (startX == 1 && startY == 11)){
                 if (diffY > 0){
                     backwards = true;
                 } else if (startY == 15 && diffX > 0) {
@@ -294,7 +302,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 } else {
                     backwards = false;
                 }
-            } else if (startX == 15){
+            } else if (startX == 15 || (startX == 14 && startY == 4)){
                 if (diffY < 0){
                     backwards = true;
                 } else if (startY == 0 && diffX < 0) {
@@ -302,7 +310,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 } else {
                     backwards = false;
                 }
-            } else if (startY == 15){
+            } else if (startY == 15 || (startX == 11 && startY == 14)){
                 if (diffX > 0){
                     backwards = true;
                 } else if (startX == 15 && diffY < 0) {
@@ -310,7 +318,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 } else {
                     backwards = false;
                 }
-            } else if (startY == 0){
+            } else if (startY == 0 || (startX == 4 && startY == 1)){
                 if (diffX < 0){
                     backwards = true;
                 } else if (startX == 0 && diffY > 0) {
@@ -327,7 +335,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
       int  Y=0;
        int X=0;
         while (Y < 4) {
-            while (X < 4) {
+            while (X < 3) {
                 X +=1;
                 if (starts[Y][X].getId() == v.getId()) {
                     break;
@@ -428,32 +436,36 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             prey = (String) coordinates[endX][endY].getTag();
         }
         if (turn == "red" && !Pattern.matches("^R.*", prey) && piece.equals("RP") && legalMove) {
-            if (!swap(piece)){
+            if (!swap(piece, prey)){
+                if (prey != ""){ sendHome(prey);}
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.redpawn);
         }
        else if (turn == "yellow" && !Pattern.matches("^Y.*", prey)&& piece.equals("YP") && legalMove) {
-            if (!swap(piece)){
+            if (!swap(piece, prey)){
+                if (prey != ""){ sendHome(prey);}
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.yellowpawn);
         }
        else if (turn == "green" && !Pattern.matches("^G.*", prey)&& piece.equals("GP") && legalMove) {
-            if (!swap(piece)){
+            if (!swap(piece, prey)){
+                if (prey != ""){ sendHome(prey);}
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.greenpawn);
         }
        else if (turn == "blue" && !Pattern.matches("^B.*", prey)&& piece.equals("BP") && legalMove) {
-            if (!swap(piece)){
+            if (!swap(piece, prey)){
+                if (prey != ""){ sendHome(prey);}
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.bluepawn);
         }
     }
 
-    private boolean swap(String s) {
+    private boolean swap(String s, String q) {
         if (Roll == 11 && !(11 == difference())) {
             coordinates[startX][startY].setImageDrawable(coordinates[endX][endY].getDrawable());
             String tag = (String) coordinates[endX][endY].getTag();
@@ -462,13 +474,39 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             turnSwitch();
             return true;
         } else if (Roll == 12) {
-            starts[startY][startX].setImageDrawable(null);
-            starts[startY][startX].setTag(null);
-            coordinates[endX][endY].setTag(s);
+            if (q != ""){ sendHome(q);}
+            Object startTag = coordinates[startX][startY].getTag();
+            Drawable startDraw = coordinates[startX][startY].getDrawable();
+            Object queueTag = coordinates[endX][endY].getTag();
+            coordinates[endX][endY].setImageDrawable(startDraw);
+            coordinates[endX][endY].setTag(startTag);
+            coordinates[startX][startY].setImageDrawable(null);
+            coordinates[startX][startY].setTag(null);
             turnSwitch();
             return true;
         } else {
             return false;
+        }
+    }
+
+    private void sendHome(String homie){
+        switch (homie){
+            case "RP":
+                coordinates[11][14].setImageResource(R.drawable.redpawn);
+                coordinates[11][14].setTag("RP");
+                break;
+            case "BP":
+                coordinates[1][11].setImageResource(R.drawable.bluepawn);
+                coordinates[1][11].setTag("BP");
+                break;
+            case "YP":
+                coordinates[4][1].setImageResource(R.drawable.yellowpawn);
+                coordinates[4][1].setTag("YP");
+                break;
+            case "GP":
+                coordinates[14][4].setImageResource(R.drawable.greenpawn);
+                coordinates[14][4].setTag("GP");
+                break;
         }
     }
 
