@@ -1,10 +1,12 @@
 package com.example.sorrygame;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 import java.util.regex.Pattern;
 
@@ -112,6 +115,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View view) {
         if (view.getId() == btnRoll.getId()) {
@@ -135,19 +139,23 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void getRoll() {
+        // use default constructor to create 'pseudo-random' numbers.
+        Random generator = new Random();
         Roll = 0;
-        int randNum = ThreadLocalRandom.current().nextInt(1, (6+1));
+        int randNum = 1 + generator.nextInt(6); // generate # from 1-6
         DieSwitch(randNum, die1);
         Roll += randNum;
-        randNum = ThreadLocalRandom.current().nextInt(1, (6+1));
+        randNum = 1 + generator.nextInt(6); // generate # from 1-6
         DieSwitch(randNum, die2);
         Roll += randNum;
         Log.d("Roll", String.valueOf(Roll));
         if (Roll == 6) {
+            Log.d("Roll", "You rolled a 6! Re-rolling.");
             getRoll();
         }
-       // Rolled = true;
+       Rolled = true;
     }
 
     public void DieSwitch(int num, ImageView die) {
@@ -232,7 +240,14 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 // code for moving out of start
                 break;
             case 7:
-                //  die.setImageResource(R.drawable.one);
+                // if they've rolled a 7 and their not at beginning then do whatever
+                if (diff == 7 && !startCheck()) {
+                    legalMove = true; // it's a valid move
+                }
+                else {
+                    turnSwitch(); // skip their turn and go to the next person
+                    legalMove = false; // not a valid move!
+                }
                 break;
             case 8:
                 // Move pawn 5 spaces
