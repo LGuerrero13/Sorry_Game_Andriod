@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import java.util.concurrent.ThreadLocalRandom;
@@ -28,11 +29,26 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     ImageView[][] starts = new ImageView[5][5];
 
     String[] letters = new String []{"R","B","Y","G"};
+    String[] Rules = new String []{
+            "Move one pawn forward/backward 2 spaces",
+            "Move one pawn forward/backward 3 spaces",
+            "Move one pawn forward/backward 4 spaces",
+            "Move one pawn forward/backward 5 spaces",
+            "Roll again",
+            "Move one pawn that is not in the Start area forward/backward 7 spaces",
+            "Move one pawn forward/backward 8 spaces",
+            "Move one pawn forward/backward 9 spaces",
+            "Move one pawn forward 10 spaces or backward 1-3 spaces",
+            "Move one pawn forward 11 spaces or switch positions with an opponents pawn that is not in the Start Home or Safety areas",
+            "Switch one of your pawns in the Start position with an opponents pawn that is not in the Start Home or Safety areas"
+    };
 
     TextView tvTurn;
+    TextView tvRules;
     ImageView die1;
     ImageView die2;
     Button btnRoll;
+    Button btnSkip;
 
     int Roll = 0;
     Boolean Rolled = false;
@@ -76,9 +92,12 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         die2 = findViewById(R.id.ivDie2);
         btnRoll = findViewById(R.id.btnRoll);
         btnRoll.setOnClickListener(this);
+        btnSkip = findViewById(R.id.btnSkip);
+        btnSkip.setOnClickListener(this);
 
         tvTurn = findViewById(R.id.tvTurn);
         tvTurn.setText("turn: " + namePR);
+        tvRules = findViewById(R.id.tvRules);
         createBoardVariables();
     }
 
@@ -122,6 +141,8 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             if (Rolled == false){
                 getRoll();
             }
+        } else if (view.getId() == btnSkip.getId()){
+            turnSwitch();
         }
         else {
             whichTile(view);
@@ -151,11 +172,43 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         DieSwitch(randNum, die2);
         Roll += randNum;
         Log.d("Roll", String.valueOf(Roll));
-        if (Roll == 6) {
-            Log.d("Roll", "You rolled a 6! Re-rolling.");
-            getRoll();
-        }
-       Rolled = true;
+        Rolled = true;
+        switch(Roll){
+            case 2:
+                tvRules.setText(Rules[0]);
+                break;
+            case 3:
+                tvRules.setText(Rules[1]);
+                break;
+            case 4:
+                tvRules.setText(Rules[2]);
+                break;
+            case 5:
+                tvRules.setText(Rules[3]);
+                break;
+            case 6:
+                tvRules.setText(Rules[4]);
+                break;
+            case 7:
+                tvRules.setText(Rules[5]);
+                break;
+            case 8:
+                tvRules.setText(Rules[6]);
+                break;
+            case 9:
+                tvRules.setText(Rules[7]);
+                break;
+            case 10:
+                tvRules.setText(Rules[8]);
+                break;
+            case 11:
+                tvRules.setText(Rules[9]);
+                break;
+            case 12:
+                tvRules.setText(Rules[10]);
+                break;
+
+        };
     }
 
     public void DieSwitch(int num, ImageView die) {
@@ -212,41 +265,32 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         switch (Roll){
             case 2:
                 // Move pawn 2 spaces
-
                 if (diff == 2){
                     legalMove = true;
                 }
-                // code for moving out of start
                 break;
             case 3:
                 // Move pawn 3 spaces
                 if ( diff ==3 ){
                     legalMove = true;
                 }
-                // code for moving out of start
                 break;
             case 4:
                 // Move pawn 4 spaces
                 if ( diff ==4){
                     legalMove = true;
                 }
-                // code for moving out of start
                 break;
             case 5:
                 // Move pawn 5 spaces
                 if ( diff ==5){
                     legalMove = true;
                 }
-                // code for moving out of start
                 break;
             case 7:
                 // if they've rolled a 7 and their not at beginning then do whatever
                 if (diff == 7 && !startCheck()) {
                     legalMove = true; // it's a valid move
-                }
-                else {
-                    turnSwitch(); // skip their turn and go to the next person
-                    legalMove = false; // not a valid move!
                 }
                 break;
             case 8:
@@ -254,14 +298,12 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 if (diff ==8){
                     legalMove = true;
                 }
-                // code for moving out of start
                 break;
             case 9:
                 // Move pawn 5 spaces
                 if (diff ==9){
                     legalMove = true;
                 }
-                // code for moving out of start
                 break;
             case 10:
                 //  forward 10 or back 1-3
@@ -284,7 +326,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 if (startCheck()) {
                     legalMove = true;
                 }
-                //die.setImageResource(R.drawable.six);
                 break;
         }
         Log.d("sigh", "rulesSwitch: legalMove = " + legalMove);
@@ -556,6 +597,10 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 }
                 break;
         }
+    }
+
+    private void safetyCancel() {
+
     }
 
     public void setTile(String s) {

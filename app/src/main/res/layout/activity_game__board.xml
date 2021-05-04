@@ -11,18 +11,18 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
+        android:layout_alignStart="@id/x6y0"
         android:layout_alignLeft="@id/x6y0"
-        app:srcCompat="@android:drawable/btn_dialog"
-        android:layout_alignStart="@id/x6y0" />
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
+        android:layout_alignStart="@id/x6y0"
         android:layout_alignLeft="@id/x6y0"
-        app:srcCompat="@android:drawable/btn_dialog"
-        android:layout_alignStart="@id/x6y0" />
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
         android:id="@+id/x15y14"
@@ -166,7 +166,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView38"
+        android:id="@+id/x14y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
@@ -174,7 +174,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView39"
+        android:id="@+id/x13y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
@@ -182,7 +182,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView40"
+        android:id="@+id/x12y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
@@ -190,7 +190,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView41"
+        android:id="@+id/x11y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
@@ -198,7 +198,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView42"
+        android:id="@+id/x10y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
@@ -370,7 +370,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/x1y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
@@ -378,7 +378,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/x2y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
@@ -386,7 +386,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/x3y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
@@ -394,7 +394,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/x4y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
@@ -402,7 +402,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/x5y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
@@ -457,7 +457,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView25"
+        android:id="@+id/x13y10"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y10"
@@ -465,7 +465,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView29"
+        android:id="@+id/x13y11"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y11"
@@ -473,7 +473,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView30"
+        android:id="@+id/x13y12"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y12"
@@ -481,7 +481,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView31"
+        android:id="@+id/x13y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y13"
@@ -491,7 +491,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView33"
+        android:id="@+id/x13y14"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y14"
@@ -679,7 +679,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/x2y1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y1"
@@ -687,7 +687,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/x2y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"
@@ -695,7 +695,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/x2y3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y3"
@@ -705,7 +705,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/x2y4"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y4"
@@ -726,7 +726,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/x2y5"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y5"
@@ -905,28 +905,48 @@
         android:layout_below="@id/x0y15"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvRules"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTurn"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="50dp"
         android:text="TextView" />
 
     <Button
         android:id="@+id/btnRoll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/tvTurn"
+        android:layout_alignTop="@id/tvRules"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_toRightOf="@id/tvTurn"
         android:text="Roll" />
+
+    <Button
+        android:id="@+id/btnSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnRoll"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@id/tvTurn"
+        android:text="Skip Turn" />
 
     <ImageView
         android:id="@+id/ivDie1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_above="@id/btnRoll"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/one"
         android:layout_alignStart="@id/btnRoll"
-        android:layout_alignLeft="@id/btnRoll" />
+        android:layout_alignLeft="@id/btnRoll"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/one" />
 
     <ImageView
         android:id="@+id/ivDie2"
