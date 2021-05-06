@@ -58,6 +58,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     int endY = 0;
     int startX = 0;
     int startY = 0;
+
     String namePR;
     String namePB;
     String namePY;
@@ -146,17 +147,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         }
         else {
             whichTile(view);
-            if (isSelected) {
-                if (coordinates[endX][endY] != coordinates[startX][startY]) {
-                    whichPiece();
-                    Log.d("ugh", "endX "+endX +" endY "+endY+" startX "+startX+" startY "+startY);
-                }
-            } else {
-                startX = endX;
-                startY = endY;
-                Log.d("ugh", "endX "+endX +" endY "+endY+" startX "+startX+" startY "+startY);
-            }
-            selectionStateSwitch();
         }
     }
 
@@ -187,6 +177,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 tvRules.setText(Rules[3]);
                 break;
             case 6:
+                Rolled = false;
                 tvRules.setText(Rules[4]);
                 break;
             case 7:
@@ -236,13 +227,19 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     public void selectionStateSwitch() {
         if (isSelected) {
+            if (coordinates[endX][endY] != coordinates[startX][startY]) {
+                whichPiece();
+                Log.d("ugh", "endX "+endX +" endY "+endY+" startX "+startX+" startY "+startY);
+            }
             isSelected = false;
            // coordinates[startX][startY].setColorFilter(null);
-           // removeTint();
+           removeTint();
         } else {
+            startX = endX;
+            startY = endY;
             isSelected = true;
             //coordinates[endX][endY].setColorFilter(Color.GREEN);
-            //tintLegal();
+            tintLegal();
         }
     }
 
@@ -452,6 +449,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             while (endX < 16) {
                 try {
                     if (coordinates[endX][endY].getId() == v.getId()) {
+                        selectionStateSwitch();
                         //coordinates[endX][endY].setImageResource(R.drawable.blackpawn);
                         break;
                     }
@@ -475,6 +473,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     public void whichPiece() {
         rulesSwitch();
         homeCancel();
+        safetyCancel();
         String piece;
         String prey;
         Boolean Legal;
@@ -583,7 +582,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 }
                 break;
             case "yellow":
-                if (endX <2 && startX > 2){
+                if (endX <=2 && startX > 2){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
                     }
@@ -600,7 +599,15 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     private void safetyCancel() {
-
+        if (endX == 2 && (endY >= 1 && endY <=5)){
+            if (turn != "yellow"){ legalMove = false;}
+        } else if (endX == 13 && (endY >= 10 && endY <=14)){
+            if (turn != "red"){ legalMove = false;}
+        } else if (endY == 2 && (endX >= 10 && endX <=14)){
+            if (turn != "green"){ legalMove = false;}
+        } else if (endY == 13 && (endX >= 1 && endX <=5)){
+            if (turn != "blue"){ legalMove = false;}
+        }
     }
 
     public void setTile(String s) {
@@ -631,4 +638,74 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         Rolled = false;
     }
 
+    public void tintLegal () {
+        String piece;
+        String prey;
+        if (coordinates[startX][startY].getTag() == null) {
+            piece = "";
+        } else {
+            piece = (String) coordinates[startX][startY].getTag();
+        }
+        endY=0;
+        endX=0;
+        while (endY < 16) {
+            while (endX < 16) {
+                try {
+                    if (coordinates[endX][endY].getTag() == null) {
+                        prey = "";
+                    } else {
+                        prey = (String) coordinates[endX][endY].getTag();
+                    }
+                    if (turn.equals("red") && !Pattern.matches("^R.*", prey)) {
+                        rulesSwitch();
+                        homeCancel();
+                        safetyCancel();
+                        if (legalMove) {
+                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                        }
+                    } else if (turn.equals("blue") && !Pattern.matches("^B.*", prey)) {
+                        rulesSwitch();
+                        homeCancel();
+                        safetyCancel();
+                        if (legalMove) {
+                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                        }
+                    } else if (turn.equals("yellow") && !Pattern.matches("^Y.*", prey)) {
+                        rulesSwitch();
+                        homeCancel();
+                        safetyCancel();
+                        if (legalMove) {
+                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                        }
+                    } else if (turn.equals("green") && !Pattern.matches("^G.*", prey)) {
+                        rulesSwitch();
+                        homeCancel();
+                        safetyCancel();
+                        if (legalMove) {
+                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                        }
+                    }
+                } catch (Exception e) { }
+                endX += 1;
+            }
+            endX = 0;
+            endY+= 1;
+        }
+    }
+
+    public void removeTint() {
+        endY=0;
+        endX=0;
+        while (endY < 16) {
+            while (endX < 16) {
+                try {
+                    coordinates[endX][endY].setBackgroundColor(Color.TRANSPARENT);
+                } catch (Exception e) { }
+                endX += 1;
+            }
+            endY += 1;
+            endX = 0;
+
+        }
+    }
 }
