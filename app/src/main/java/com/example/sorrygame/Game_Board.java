@@ -245,8 +245,16 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     public int difference() {
         int difference = 0;
-        difference += abs(endX - startX);
-        difference += abs(endY - startY);
+        if (startCheck()){
+            difference += 2;
+            difference += abs(endX - startX);
+            difference += abs(endY - startY);
+        } else if (safetyCheck()){
+            difference = safetyHandling();
+        } else {
+            difference += abs(endX - startX);
+            difference += abs(endY - startY);
+        }
         return difference;
     }
 
@@ -258,7 +266,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
          //   return;
      //   }
         // set roll value for debug, remove later
-       //Roll = 12;
+       //Roll = 11;
         switch (Roll){
             case 2:
                 // Move pawn 2 spaces
@@ -325,7 +333,59 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 }
                 break;
         }
-        Log.d("sigh", "rulesSwitch: legalMove = " + legalMove);
+    }
+
+    private boolean safetyCheck(){
+        boolean check = false;
+        if (endX == 2 && (endY >= 1 && endY <=5)){
+            if (turn == "yellow"){check = true;}
+        } else if (endX == 13 && (endY >= 10 && endY <=14)){
+            if (turn == "red"){check =  true;}
+        } else if (endY == 2 && (endX >= 10 && endX <=14)){
+            if (turn == "green"){check =  true;}
+        } else if (endY == 13 && (endX >= 1 && endX <=5)){
+            if (turn == "blue"){check = true;}
+        }
+        return check;
+    }
+
+    private int safetyHandling() {
+        int diff = 0;
+        switch (turn){
+            case "red":
+                diff += abs(15 - startY);
+                diff += abs(endY - 15);
+                diff += abs(endX = startX);
+                break;
+            case "blue":
+                diff += abs(startX);
+                diff += abs(endX);
+                diff += abs(endY = startY);
+                break;
+            case "yellow":
+                diff += abs(startY);
+                diff += abs(endY);
+                diff += abs(endX = startX);
+                break;
+            case "green":
+                diff += abs(15 - startX);
+                diff += abs(endX - 15);
+                diff += abs(endY = startY);
+                break;
+        }
+        return diff;
+    }
+
+    private void safetyCancel() {
+        if (endX == 2 && (endY >= 1 && endY <=5)){
+            if (turn != "yellow"){ legalMove = false;}
+        } else if (endX == 13 && (endY >= 10 && endY <=14)){
+            if (turn != "red"){ legalMove = false;}
+        } else if (endY == 2 && (endX >= 10 && endX <=14)){
+            if (turn != "green"){ legalMove = false;}
+        } else if (endY == 13 && (endX >= 1 && endX <=5)){
+            if (turn != "blue"){ legalMove = false;}
+        }
     }
 
     private boolean startCheck(){
@@ -339,6 +399,60 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private boolean startCheck(View v) {
+        int  Y=0;
+        int X=0;
+        while (Y < 4) {
+            while (X < 3) {
+                X +=1;
+                if (starts[Y][X].getId() == v.getId()) {
+                    break;
+                }
+            }
+            if (starts[Y][X].getId() == v.getId()) {
+                break;
+            }
+            X = 0;
+            Y += 1;
+        }
+        if (turn == "red" && Y == 0){
+            endY = 14;
+            endX = 11;
+            hopper(X, Y);
+            return true;
+        } else if (turn == "blue" && Y == 1){
+            endY = 11;
+            endX = 1;
+            hopper(X, Y);
+            return true;
+        } else if (turn == "yellow" && Y == 2){
+            endY = 1;
+            endX = 4;
+            hopper(X, Y);
+            return true;
+        } else if (turn == "green" && Y == 3){
+            endY = 4;
+            endX = 14;
+            hopper(X, Y);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private void startCancel(){
+        if (endX == 11 && endY == 14){
+            legalMove = false;
+        } else if (endX == 1 && endY == 11){
+            legalMove = false;
+        } else if (endX == 4 && endY == 1){
+            legalMove = false;
+        } else if (endX == 14 && endY == 4){
+            legalMove = false;
         }
     }
 
@@ -382,48 +496,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             }
         Log.d("moveCheck", "isMovingBack: " + backwards);
         return backwards;
-    }
-
-    private boolean startCheck(View v) {
-      int  Y=0;
-       int X=0;
-        while (Y < 4) {
-            while (X < 3) {
-                X +=1;
-                if (starts[Y][X].getId() == v.getId()) {
-                    break;
-                }
-            }
-            if (starts[Y][X].getId() == v.getId()) {
-                break;
-            }
-           X = 0;
-           Y += 1;
-        }
-        if (turn == "red" && Y == 0){
-            endY = 14;
-            endX = 11;
-            hopper(X, Y);
-            return true;
-        } else if (turn == "blue" && Y == 1){
-            endY = 11;
-            endX = 1;
-            hopper(X, Y);
-            return true;
-        } else if (turn == "yellow" && Y == 2){
-            endY = 1;
-            endX = 4;
-            hopper(X, Y);
-            return true;
-        } else if (turn == "green" && Y == 3){
-            endY = 4;
-            endX = 14;
-            hopper(X, Y);
-            return true;
-        } else {
-            return false;
-        }
-
     }
 
     private void hopper(int X, int Y){
@@ -471,9 +543,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     public void whichPiece() {
-        rulesSwitch();
-        homeCancel();
-        safetyCancel();
+        rules();
         String piece;
         String prey;
         Boolean Legal;
@@ -521,7 +591,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     private boolean swap(String s, String q) {
-        if (Roll == 11 && !(11 == difference())) {
+        if (Roll == 11) {
             coordinates[startX][startY].setImageDrawable(coordinates[endX][endY].getDrawable());
             String tag = (String) coordinates[endX][endY].getTag();
             coordinates[endX][endY].setTag(s);
@@ -571,43 +641,47 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 if (endX >=13 && startX < 13){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    }
+                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
                 }
                 break;
             case "blue":
                 if (endY >=13 && startY < 13){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    }
+                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
                 }
                 break;
             case "yellow":
                 if (endX <=2 && startX > 2){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    }
+                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
                 }
                 break;
             case "green":
                 if (endY <=2 && startY > 2){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    }
+                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
                 }
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + turn);
         }
     }
 
-    private void safetyCancel() {
-        if (endX == 2 && (endY >= 1 && endY <=5)){
-            if (turn != "yellow"){ legalMove = false;}
-        } else if (endX == 13 && (endY >= 10 && endY <=14)){
-            if (turn != "red"){ legalMove = false;}
-        } else if (endY == 2 && (endX >= 10 && endX <=14)){
-            if (turn != "green"){ legalMove = false;}
-        } else if (endY == 13 && (endX >= 1 && endX <=5)){
-            if (turn != "blue"){ legalMove = false;}
+    private void elevenCancel(){
+        if (Roll == 11 && 11 != difference()) {
+           if (startCheck()){legalMove = false;}
         }
+    }
+
+    private void rules(){
+        rulesSwitch();
+        homeCancel();
+        safetyCancel();
+        startCancel();
+        elevenCancel();
     }
 
     public void setTile(String s) {
@@ -657,30 +731,22 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                         prey = (String) coordinates[endX][endY].getTag();
                     }
                     if (turn.equals("red") && !Pattern.matches("^R.*", prey)) {
-                        rulesSwitch();
-                        homeCancel();
-                        safetyCancel();
+                        rules();
                         if (legalMove) {
                             coordinates[endX][endY].setBackgroundColor(Color.BLUE);
                         }
                     } else if (turn.equals("blue") && !Pattern.matches("^B.*", prey)) {
-                        rulesSwitch();
-                        homeCancel();
-                        safetyCancel();
+                        rules();
                         if (legalMove) {
                             coordinates[endX][endY].setBackgroundColor(Color.BLUE);
                         }
                     } else if (turn.equals("yellow") && !Pattern.matches("^Y.*", prey)) {
-                        rulesSwitch();
-                        homeCancel();
-                        safetyCancel();
+                        rules();
                         if (legalMove) {
                             coordinates[endX][endY].setBackgroundColor(Color.BLUE);
                         }
                     } else if (turn.equals("green") && !Pattern.matches("^G.*", prey)) {
-                        rulesSwitch();
-                        homeCancel();
-                        safetyCancel();
+                        rules();
                         if (legalMove) {
                             coordinates[endX][endY].setBackgroundColor(Color.BLUE);
                         }
