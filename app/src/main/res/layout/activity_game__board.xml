@@ -865,9 +865,10 @@
         android:layout_height="410dp"
         android:layout_marginStart="2dp"
         android:layout_marginLeft="2dp"
+        android:background="@drawable/desert_sorry_theme"
         android:clickable="false"
         android:translationZ="-1dp"
-        app:srcCompat="@drawable/classic_sorry_theme" />
+        app:srcCompat="@drawable/slides" />
 
 
 </RelativeLayout>

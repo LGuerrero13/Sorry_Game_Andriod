@@ -63,6 +63,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     int endY = 0;
     int startX = 0;
     int startY = 0;
+    int slideNum = 0;
 
     String namePR;
     String namePB;
@@ -167,7 +168,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         DieSwitch(randNum, die2);
         Roll += randNum;
         Log.d("Roll", String.valueOf(Roll));
-        Rolled = true;
+        //Rolled = true;
         switch(Roll){
             case 2:
                 tvRules.setText(Rules[0]);
@@ -253,7 +254,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         if (startCheck()){
             difference += abs(endX - startX);
             difference += abs(endY - startY);
-            if (Roll == 11) {difference += 2;}
+           // if (Roll == 11) {difference += 2;}
         } else if (safetyCheck()){
             difference = safetyHandling();
         } else {
@@ -268,7 +269,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         legalMove = false;
         int diff = difference();
         if (!Rolled){
-           return;
+          // return;
         }
         // set roll value for debug, remove later
        //Roll = 11;
@@ -336,6 +337,127 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 if (startCheck()) {
                     legalMove = true;
                 }
+                break;
+        }
+    }
+
+    private boolean slideCheck(){
+        boolean sliding = false;
+        if (endY == 0 && (endX == 1 || endX == 10)){
+            if (!turn.matches("yellow")){
+                sliding = true;
+                if (endX == 1){slideNum = 1;}
+                if (endX == 10){slideNum = 2;}
+            }
+        } else if (endY == 15 && (endX == 5 || endX == 14)){
+            if (!turn.matches("red")){
+                sliding = true;
+                if (endX == 14){slideNum = 5;}
+                if (endX == 5){slideNum = 6;}
+            }
+        } else if (endX == 0 && (endY == 5 || endY == 14)){
+            if (!turn.matches("blue")){
+                sliding = true;
+                if (endY == 14){slideNum = 7;}
+                if (endY == 5){slideNum = 8;}
+            }
+        } else if (endX == 15 && (endY == 1 || endY == 10)){
+            if (!turn.matches("green")){
+                sliding = true;
+                if (endY == 1){slideNum = 3;}
+                if (endY == 10){slideNum = 4;}
+            }
+        }
+        return sliding;
+    }
+
+    private void slide() {
+        switch (slideNum) {
+            case 1:
+                clearPawn(2, 0);
+                clearPawn(3, 0);
+                clearPawn(4, 0);
+                setPawn(4, 0);
+                clearPawn(endX, endY);
+                break;
+            case 2:
+                clearPawn(11, 0);
+                clearPawn(12, 0);
+                clearPawn(13, 0);
+                setPawn(13, 0);
+                clearPawn(endX, endY);
+                break;
+            case 3:
+                clearPawn(15, 2);
+                clearPawn(15, 3);
+                clearPawn(15, 4);
+                setPawn(15, 4);
+                clearPawn(endX, endY);
+                break;
+            case 4:
+                clearPawn(15, 11);
+                clearPawn(15, 12);
+                clearPawn(15, 13);
+                setPawn(15, 13);
+                clearPawn(endX, endY);
+                break;
+            case 5:
+                clearPawn(13, 15);
+                clearPawn(12, 15);
+                clearPawn(11, 15);
+                setPawn(11, 15);
+                clearPawn(endX, endY);
+                break;
+            case 6:
+                clearPawn(4, 15);
+                clearPawn(3, 15);
+                clearPawn(2, 15);
+                setPawn(2, 15);
+                clearPawn(endX, endY);
+                break;
+            case 7:
+                clearPawn(0, 13);
+                clearPawn(0, 12);
+                clearPawn(0, 11);
+                setPawn(0, 11);
+                clearPawn(endX, endY);
+                break;
+            case 8:
+                clearPawn(0, 4);
+                clearPawn(0, 3);
+                clearPawn(0, 2);
+                setPawn(0, 2);
+                clearPawn(endX, endY);
+                break;
+        }
+
+    }
+
+    private void clearPawn(int x, int y){
+        if (coordinates[x][y].getTag() != null) {
+            sendHome((String)coordinates[x][y].getTag());
+        }
+        coordinates[x][y].setImageDrawable(null);
+        coordinates[x][y].setTag(null);
+    }
+
+    private void setPawn(int x, int y) {
+        switch (turn){
+            case "red":
+                coordinates[x][y].setImageResource(R.drawable.redpawn);
+                coordinates[x][y].setTag("RP");
+                break;
+            case "blue":
+                coordinates[x][y].setImageResource(R.drawable.bluepawn);
+                coordinates[x][y].setTag("BP");
+                break;
+            case "yellow":
+                coordinates[x][y].setImageResource(R.drawable.yellowpawn);
+                coordinates[x][y].setTag("YP");
+                break;
+            case "green":
+                coordinates[x][y].setImageResource(R.drawable.greenpawn);
+                coordinates[x][y].setTag("GP");
                 break;
         }
     }
@@ -555,7 +677,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         rules();
         String piece;
         String prey;
-        Boolean Legal;
         if (legalMove == false){
             return;
         }
@@ -626,20 +747,28 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     private void sendHome(String homie){
         switch (homie){
             case "RP":
-                coordinates[11][14].setImageResource(R.drawable.redpawn);
-                coordinates[11][14].setTag("RP");
+                if (!turn.matches("red")){
+                    coordinates[11][14].setImageResource(R.drawable.redpawn);
+                    coordinates[11][14].setTag("RP");
+                }
                 break;
             case "BP":
-                coordinates[1][11].setImageResource(R.drawable.bluepawn);
-                coordinates[1][11].setTag("BP");
+                if (!turn.matches("blue")) {
+                    coordinates[1][11].setImageResource(R.drawable.bluepawn);
+                    coordinates[1][11].setTag("BP");
+                }
                 break;
             case "YP":
-                coordinates[4][1].setImageResource(R.drawable.yellowpawn);
-                coordinates[4][1].setTag("YP");
+                if (!turn.matches("yellow")) {
+                    coordinates[4][1].setImageResource(R.drawable.yellowpawn);
+                    coordinates[4][1].setTag("YP");
+                }
                 break;
             case "GP":
-                coordinates[14][4].setImageResource(R.drawable.greenpawn);
-                coordinates[14][4].setTag("GP");
+                if (!turn.matches("green")) {
+                    coordinates[14][4].setImageResource(R.drawable.greenpawn);
+                    coordinates[14][4].setTag("GP");
+                }
                 break;
         }
     }
@@ -680,8 +809,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     private void elevenCancel(){
-        if (Roll == 11 && 11 != difference()) {
-           if (startCheck()){legalMove = false;}
+        if (Roll == 11 && startCheck() ) {
+           if (11 != difference()){legalMove = false;}
+           else if (endX == startX || endY == startY){legalMove = false;}
         }
     }
 
@@ -701,6 +831,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
        //if (endGame == true){
            // gameEnd();
         //} else {
+        if (slideCheck()){
+            slide();
+        }
         turnSwitch();
     }
 
