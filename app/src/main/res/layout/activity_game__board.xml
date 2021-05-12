@@ -12,8 +12,7 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
         android:layout_alignStart="@id/x6y0"
-        android:layout_alignLeft="@id/x6y0"
-         />
+        android:layout_alignLeft="@id/x6y0" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -21,96 +20,84 @@
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
         android:layout_alignStart="@id/x6y0"
-        android:layout_alignLeft="@id/x6y0"
-         />
+        android:layout_alignLeft="@id/x6y0" />
 
     <ImageView
         android:id="@+id/x15y14"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y13"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y12"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y11"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y10"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y10"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y9"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y9"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y8"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y8"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y7"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y7"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y6"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y6"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y5"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y5"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y4"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y4"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y3"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/sG3"
@@ -153,158 +140,137 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y2"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x15y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x14y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x14y0"
-         />
+        android:layout_alignLeft="@id/x14y0" />
 
     <ImageView
         android:id="@+id/x13y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x13y0"
-         />
+        android:layout_alignLeft="@id/x13y0" />
 
     <ImageView
         android:id="@+id/x12y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x12y0"
-         />
+        android:layout_alignLeft="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x11y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x11y0"
-         />
+        android:layout_alignLeft="@id/x11y0" />
 
     <ImageView
         android:id="@+id/x10y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x10y0"
-         />
+        android:layout_alignLeft="@id/x10y0" />
 
     <ImageView
         android:id="@+id/imageView47"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y2"
-        android:layout_alignLeft="@id/x10y0"
-         />
+        android:layout_alignLeft="@id/x10y0" />
 
     <ImageView
         android:id="@+id/imageView45"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
-        android:layout_alignLeft="@id/x9y0"
-         />
+        android:layout_alignLeft="@id/x9y0" />
 
     <ImageView
         android:id="@+id/imageView46"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y2"
-        android:layout_alignLeft="@id/x9y0"
-         />
+        android:layout_alignLeft="@id/x9y0" />
 
     <ImageView
         android:id="@+id/x15y1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y0"
-        android:layout_alignLeft="@id/x15y0"
-         />
+        android:layout_alignLeft="@id/x15y0" />
 
     <ImageView
         android:id="@+id/x0y1"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y0"
-         />
+        android:layout_below="@id/x0y0" />
 
     <ImageView
         android:id="@+id/x0y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y1"
-         />
+        android:layout_below="@id/x0y1" />
 
     <ImageView
         android:id="@+id/x0y3"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y2"
-         />
+        android:layout_below="@id/x0y2" />
 
     <ImageView
         android:id="@+id/x0y4"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y3"
-        />
+        android:layout_below="@id/x0y3" />
 
     <ImageView
         android:id="@+id/x0y5"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y4"
-        />
+        android:layout_below="@id/x0y4" />
 
     <ImageView
         android:id="@+id/x0y6"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y5"
-        />
+        android:layout_below="@id/x0y5" />
 
     <ImageView
         android:id="@+id/x0y7"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y6"
-         />
+        android:layout_below="@id/x0y6" />
 
     <ImageView
         android:id="@+id/x0y8"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y7"
-         />
+        android:layout_below="@id/x0y7" />
 
     <ImageView
         android:id="@+id/x0y9"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y8"
-         />
+        android:layout_below="@id/x0y8" />
 
     <ImageView
         android:id="@+id/x0y10"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y9"
-         />
+        android:layout_below="@id/x0y9" />
 
     <ImageView
         android:id="@+id/sB1"
@@ -352,126 +318,110 @@
         android:id="@+id/x0y12"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y11"
-         />
+        android:layout_below="@id/x0y11" />
 
     <ImageView
         android:id="@+id/x0y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y12"
-         />
+        android:layout_below="@id/x0y12" />
 
     <ImageView
         android:id="@+id/x1y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
-        android:layout_alignLeft="@id/x1y0"
-         />
+        android:layout_alignLeft="@id/x1y0" />
 
     <ImageView
         android:id="@+id/x2y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
-        android:layout_alignLeft="@id/x2y0"
-         />
+        android:layout_alignLeft="@id/x2y0" />
 
     <ImageView
         android:id="@+id/x3y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
-        android:layout_alignLeft="@id/x3y0"
-         />
+        android:layout_alignLeft="@id/x3y0" />
 
     <ImageView
         android:id="@+id/x4y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
-        android:layout_alignLeft="@id/x4y0"
-         />
+        android:layout_alignLeft="@id/x4y0" />
 
     <ImageView
         android:id="@+id/x5y13"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
-        android:layout_alignLeft="@id/x5y0"
-         />
+        android:layout_alignLeft="@id/x5y0" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
-        android:layout_alignLeft="@id/x5y0"
-         />
+        android:layout_alignLeft="@id/x5y0" />
 
     <ImageView
         android:id="@+id/x0y14"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y13"
-         />
+        android:layout_below="@id/x0y13" />
 
     <ImageView
         android:id="@+id/x15y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x14y0"
-         />
+        android:layout_toRightOf="@id/x14y0" />
 
     <ImageView
         android:id="@+id/x14y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x13y0"
-         />
+        android:layout_toRightOf="@id/x13y0" />
 
     <ImageView
         android:id="@+id/x12y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x11y0"
-         />
+        android:layout_toRightOf="@id/x11y0" />
 
     <ImageView
         android:id="@+id/x13y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x13y10"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y10"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x13y11"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y11"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x13y12"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y12"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x13y13"
@@ -480,8 +430,7 @@
         android:layout_alignTop="@id/x0y13"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="-1dp"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x13y14"
@@ -490,32 +439,28 @@
         android:layout_alignTop="@id/x0y14"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="-1dp"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/imageView28"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y10"
-        android:layout_toRightOf="@id/x11y0"
-         />
+        android:layout_toRightOf="@id/x11y0" />
 
     <ImageView
         android:id="@+id/imageView26"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y9"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/imageView27"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y9"
-        android:layout_toRightOf="@id/x11y0"
-         />
+        android:layout_toRightOf="@id/x11y0" />
 
     <ImageView
         android:id="@+id/x11y15"
@@ -565,126 +510,110 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x9y0"
-         />
+        android:layout_toRightOf="@id/x9y0" />
 
     <ImageView
         android:id="@+id/x9y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x8y0"
-         />
+        android:layout_toRightOf="@id/x8y0" />
 
     <ImageView
         android:id="@+id/x8y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x7y0"
-         />
+        android:layout_toRightOf="@id/x7y0" />
 
     <ImageView
         android:id="@+id/x7y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x6y0"
-         />
+        android:layout_toRightOf="@id/x6y0" />
 
     <ImageView
         android:id="@+id/x0y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@id/x0y14"
-         />
+        android:layout_below="@id/x0y14" />
 
     <ImageView
         android:id="@+id/x1y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x0y15"
-         />
+        android:layout_toRightOf="@id/x0y15" />
 
     <ImageView
         android:id="@+id/x2y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/x3y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x2y0"
-         />
+        android:layout_toRightOf="@id/x2y0" />
 
     <ImageView
         android:id="@+id/x4y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x3y0"
-         />
+        android:layout_toRightOf="@id/x3y0" />
 
     <ImageView
         android:id="@+id/x5y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x4y0"
-         />
+        android:layout_toRightOf="@id/x4y0" />
 
     <ImageView
         android:id="@+id/x6y15"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y15"
-        android:layout_toRightOf="@id/x5y0"
-         />
+        android:layout_toRightOf="@id/x5y0" />
 
     <ImageView
         android:id="@+id/x0y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="5dp"
-         />
+        android:layout_marginTop="5dp" />
 
     <ImageView
         android:id="@+id/x1y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x0y0"
-         />
+        android:layout_toRightOf="@id/x0y0" />
 
     <ImageView
         android:id="@+id/x2y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/x2y1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y1"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/x2y2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y2"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/x2y3"
@@ -693,8 +622,7 @@
         android:layout_alignTop="@id/x0y3"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="-1dp"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/x2y4"
@@ -704,8 +632,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="-1dp"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -714,8 +641,7 @@
         android:layout_alignTop="@id/x0y5"
         android:layout_marginLeft="-1dp"
         android:layout_marginTop="-3dp"
-        android:layout_toRightOf="@id/x2y0"
-         />
+        android:layout_toRightOf="@id/x2y0" />
 
     <ImageView
         android:id="@+id/x2y5"
@@ -724,8 +650,7 @@
         android:layout_alignTop="@id/x0y5"
         android:layout_marginLeft="-1dp"
         android:layout_marginTop="-3dp"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/imageView18"
@@ -735,8 +660,7 @@
         android:layout_marginStart="-1dp"
         android:layout_marginLeft="-1dp"
         android:layout_marginTop="-3dp"
-        android:layout_toRightOf="@id/x1y0"
-         />
+        android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -746,24 +670,21 @@
         android:layout_marginStart="-1dp"
         android:layout_marginLeft="-1dp"
         android:layout_marginTop="-3dp"
-        android:layout_toRightOf="@id/x2y0"
-         />
+        android:layout_toRightOf="@id/x2y0" />
 
     <ImageView
         android:id="@+id/x3y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x2y0"
-         />
+        android:layout_toRightOf="@id/x2y0" />
 
     <ImageView
         android:id="@+id/x4y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x3y0"
-         />
+        android:layout_toRightOf="@id/x3y0" />
 
     <ImageView
         android:id="@+id/x4y1"
@@ -806,88 +727,77 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x4y0"
-         />
+        android:layout_toRightOf="@id/x4y0" />
 
     <ImageView
         android:id="@+id/x6y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x5y0"
-         />
+        android:layout_toRightOf="@id/x5y0" />
 
     <ImageView
         android:id="@+id/x7y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x6y0"
-         />
+        android:layout_toRightOf="@id/x6y0" />
 
     <ImageView
         android:id="@+id/x8y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x7y0"
-         />
+        android:layout_toRightOf="@id/x7y0" />
 
     <ImageView
         android:id="@+id/x9y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x8y0"
-         />
+        android:layout_toRightOf="@id/x8y0" />
 
     <ImageView
         android:id="@+id/x10y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x9y0"
-         />
+        android:layout_toRightOf="@id/x9y0" />
 
     <ImageView
         android:id="@+id/x11y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x10y0"
-         />
+        android:layout_toRightOf="@id/x10y0" />
 
     <ImageView
         android:id="@+id/x12y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x11y0"
-         />
+        android:layout_toRightOf="@id/x11y0" />
 
     <ImageView
         android:id="@+id/x13y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x12y0"
-         />
+        android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
         android:id="@+id/x14y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x13y0"
-         />
+        android:layout_toRightOf="@id/x13y0" />
 
     <ImageView
         android:id="@+id/x15y0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y0"
-        android:layout_toRightOf="@id/x14y0"
-         />
+        android:layout_toRightOf="@id/x14y0" />
 
     <TextView
         android:id="@+id/tvTurn"

@@ -2,6 +2,7 @@ package com.example.sorrygame;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,8 +21,10 @@ import java.util.Random;
 
 import java.util.regex.Pattern;
 
+import static com.example.sorrygame.R.drawable.tile_highlight;
 import static java.lang.Math.abs;
 
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     ImageView[][] coordinates = new ImageView[17][17];
@@ -42,6 +45,8 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             "Move one pawn forward 11 spaces or switch positions with an opponents pawn that is not in the Start Home or Safety areas",
             "Switch one of your pawns in the Start position with an opponents pawn that is not in the Start Home or Safety areas"
     };
+
+   // Drawable high = getDrawable(tile_highlight);
 
     TextView tvTurn;
     TextView tvRules;
@@ -246,9 +251,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     public int difference() {
         int difference = 0;
         if (startCheck()){
-            difference += 2;
             difference += abs(endX - startX);
             difference += abs(endY - startY);
+            if (Roll == 11) {difference += 2;}
         } else if (safetyCheck()){
             difference = safetyHandling();
         } else {
@@ -262,9 +267,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         // add indicator on game board for what each roll does
         legalMove = false;
         int diff = difference();
-        //if (!Rolled){
-         //   return;
-     //   }
+        if (!Rolled){
+           return;
+        }
         // set roll value for debug, remove later
        //Roll = 11;
         switch (Roll){
@@ -355,23 +360,25 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             case "red":
                 diff += abs(15 - startY);
                 diff += abs(endY - 15);
-                diff += abs(endX = startX);
+                diff += abs(endX - startX);
                 break;
             case "blue":
                 diff += abs(startX);
                 diff += abs(endX);
-                diff += abs(endY = startY);
+                diff += abs(endY - startY);
                 break;
             case "yellow":
                 diff += abs(startY);
                 diff += abs(endY);
-                diff += abs(endX = startX);
+                diff += abs(endX - startX);
                 break;
             case "green":
                 diff += abs(15 - startX);
                 diff += abs(endX - 15);
-                diff += abs(endY = startY);
+                diff += abs(endY - startY);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + turn);
         }
         return diff;
     }
@@ -526,8 +533,9 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                         break;
                     }
                 } catch (Exception e) {
+                } finally {
+                    endX += 1;
                 }
-                endX += 1;
             }
             try {
                 if (coordinates[endX][endY].getId() == v.getId()) {
@@ -535,10 +543,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                     break;
                 }
             } catch (Exception e) {
+            } finally {
+                // reset endX coord
+                endX = 0;
+                endY += 1;
             }
-            // reset endX coord
-            endX = 0;
-            endY += 1;
         }
     }
 
@@ -591,7 +600,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     private boolean swap(String s, String q) {
-        if (Roll == 11) {
+        if (Roll == 11 && !(11 == difference())) {
             coordinates[startX][startY].setImageDrawable(coordinates[endX][endY].getDrawable());
             String tag = (String) coordinates[endX][endY].getTag();
             coordinates[endX][endY].setTag(s);
@@ -713,6 +722,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     }
 
     public void tintLegal () {
+        int iteration = 0;
         String piece;
         String prey;
         if (coordinates[startX][startY].getTag() == null) {
@@ -733,30 +743,32 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                     if (turn.equals("red") && !Pattern.matches("^R.*", prey)) {
                         rules();
                         if (legalMove) {
-                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                            coordinates[endX][endY].setBackground(getDrawable(tile_highlight));
                         }
                     } else if (turn.equals("blue") && !Pattern.matches("^B.*", prey)) {
                         rules();
                         if (legalMove) {
-                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                            coordinates[endX][endY].setBackground(getDrawable(tile_highlight));
                         }
                     } else if (turn.equals("yellow") && !Pattern.matches("^Y.*", prey)) {
                         rules();
                         if (legalMove) {
-                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                            coordinates[endX][endY].setBackground(getDrawable(tile_highlight));
                         }
                     } else if (turn.equals("green") && !Pattern.matches("^G.*", prey)) {
                         rules();
                         if (legalMove) {
-                            coordinates[endX][endY].setBackgroundColor(Color.BLUE);
+                            coordinates[endX][endY].setBackground(getDrawable(tile_highlight));
                         }
                     }
                 } catch (Exception e) { }
-                endX += 1;
+                finally {endX += 1;
+                iteration += 1;}
             }
             endX = 0;
             endY+= 1;
         }
+        iteration = 0;
     }
 
     public void removeTint() {
@@ -765,7 +777,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         while (endY < 16) {
             while (endX < 16) {
                 try {
-                    coordinates[endX][endY].setBackgroundColor(Color.TRANSPARENT);
+                    coordinates[endX][endY].setBackground(null);
                 } catch (Exception e) { }
                 endX += 1;
             }
