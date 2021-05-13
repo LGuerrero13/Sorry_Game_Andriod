@@ -32,7 +32,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
 
     ImageView[][] starts = new ImageView[5][5];
 
-    ImageView[][] homes = new ImageView[5][5];
+    ImageView[][] homes = new ImageView[4][3];
 
     String[] letters = new String []{"R","B","Y","G"};
     String[] Rules = new String []{
@@ -144,15 +144,14 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         }
         for (int i = 0; i < letters.length; i++) {
             while (n < 3) {
-                n +=1;
                 tileID = "h" + letters[i] + n;
                 int resID = getResources().getIdentifier(tileID, "id", getPackageName());
                 homes[i][n] = (findViewById(resID));
-                Log.d("start", "createBoardVariables: " + starts[i][n] + " " + i + " " + n);
+                Log.d("start", "createBoardVariables: " + homes[i][n] + " " + i + " " + n);
+                n +=1;
             }
             n = 0;
         }
-
     }
 
     private void endGame(){
@@ -165,17 +164,18 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 endGame();
             }
         }
-        if (endX == 10 && endY == 2) {
+        else if (endX == 10 && endY == 2) {
             if (!loader()) {
             endGame();
             }
         }
-        if (endX == 13 && endY == 10) {
+        else if (endX == 13 && endY == 10) {
+            Log.d("174", "homeCheck: redhome");
             if (!loader()) {
                 endGame();
             }
         }
-        if (endX == 5 && endY == 13) {
+        else if (endX == 5 && endY == 13) {
             if (!loader()) {
                 endGame();
             }
@@ -186,11 +186,15 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         boolean loaded = false;
         switch (turn){
             case "red":
+                Log.d("TAG", "loader: 190");
                 for (int i = 0; i < 3; i++){
+                    Log.d("TAG", "loader: 192");
                     if (homes[0][i].getTag() == null) {
+                        Log.d("TAG", "loader: 194");
                         homes[0][i].setTag("RP");
                         homes[0][i].setImageResource(R.drawable.redpawn);
                         loaded = true;
+                        clearPawn(13, 10);
                         break;
                     }
                 }
@@ -201,6 +205,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                         homes[1][i].setTag("BP");
                         homes[1][i].setImageResource(R.drawable.bluepawn);
                         loaded = true;
+                        clearPawn(5, 13);
                         break;
                     }
                 }
@@ -211,6 +216,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                         homes[2][i].setTag("YP");
                         homes[2][i].setImageResource(R.drawable.yellowpawn);
                         loaded = true;
+                        clearPawn(2, 5);
                         break;
                     }
                 }
@@ -221,6 +227,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                         homes[3][i].setTag("GP");
                         homes[3][i].setImageResource(R.drawable.greenpawn);
                         loaded = true;
+                        clearPawn(10, 2);
                         break;
                     }
                 }
@@ -343,7 +350,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             difference += abs(endX - startX);
             difference += abs(endY - startY);
            // if (Roll == 11) {difference += 2;}
-        } else if (safetyCheck()){
+        } else if (safetyCheck(endX, endY) || safetyCheck(startX, startY)){
             difference = safetyHandling();
         } else {
             difference += abs(endX - startX);
@@ -550,15 +557,15 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         }
     }
 
-    private boolean safetyCheck(){
+    private boolean safetyCheck(int x, int y){
         boolean check = false;
-        if (endX == 2 && (endY >= 1 && endY <=5)){
+        if (x == 2 && (y >= 1 && y <=5)){
             if (turn == "yellow"){check = true;}
-        } else if (endX == 13 && (endY >= 10 && endY <=14)){
+        } else if (x == 13 && (y >= 10 && y <=14)){
             if (turn == "red"){check =  true;}
-        } else if (endY == 2 && (endX >= 10 && endX <=14)){
+        } else if (y == 2 && (x >= 10 && x <=14)){
             if (turn == "green"){check =  true;}
-        } else if (endY == 13 && (endX >= 1 && endX <=5)){
+        } else if (y == 13 && (x >= 1 && x <=5)){
             if (turn == "blue"){check = true;}
         }
         return check;
@@ -568,24 +575,60 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         int diff = 0;
         switch (turn){
             case "red":
-                diff += abs(15 - startY);
-                diff += abs(endY - 15);
-                diff += abs(endX - startX);
+                if (safetyCheck(startX, startY) && safetyCheck(endX, endY)) {
+                    diff += abs(endX - startX);
+                    diff += abs(endY - startY);
+                } else if (safetyCheck(startX, startY)) {
+                    diff += abs(15- startY);
+                    diff += abs(15 - endY);
+                    diff += abs(13 - endX);
+                } else {
+                    diff += abs(15- startY);
+                    diff += abs(13- startX);
+                    diff += abs(endY - 15);
+                }
                 break;
             case "blue":
-                diff += abs(startX);
-                diff += abs(endX);
-                diff += abs(endY - startY);
+                if (safetyCheck(startX, startY) && safetyCheck(endX, endY)) {
+                    diff += abs(endX - startX);
+                    diff += abs(endY - startY);
+                } else if (safetyCheck(startX, startY)) {
+                    diff += abs(startX);
+                    diff += abs(13 - endY);
+                    diff += abs(endX);
+                } else {
+                    diff += abs(startX);
+                    diff += abs(13 - startY);
+                    diff += abs(endX);
+                }
                 break;
             case "yellow":
-                diff += abs(startY);
-                diff += abs(endY);
-                diff += abs(endX - startX);
+                if (safetyCheck(startX, startY) && safetyCheck(endX, endY)) {
+                    diff += abs(endX - startX);
+                    diff += abs(endY - startY);
+                } else if (safetyCheck(startX, startY)) {
+                    diff += abs(startY - 15);
+                    diff += abs(endY);
+                    diff += abs(2 - endX);
+                } else {
+                    diff += abs(2 - startX);
+                    diff += abs(startY - 15);
+                    diff += abs(endY);
+                }
                 break;
             case "green":
-                diff += abs(15 - startX);
-                diff += abs(endX - 15);
-                diff += abs(endY - startY);
+                if (safetyCheck(startX, startY) && safetyCheck(endX, endY)) {
+                    diff += abs(endX - startX);
+                    diff += abs(endY - startY);
+                } else if (safetyCheck(startX, startY)) {
+                    diff += abs(15- startX);
+                    diff += abs(2 - endY);
+                    diff += abs(15 - endX);
+                } else {
+                    diff += abs(15 - startX);
+                    diff += abs(2 - startY);
+                    diff += abs(15 - endX);
+                }
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + turn);
@@ -882,31 +925,31 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     public void homeCancel() {
         switch (turn) {
             case "red":
-                if (endX >=13 && startX < 13){
+                if (endX >=13 && startX < 13 && (startY == 15 || startCheck())){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
+                    } else if (Roll == 11) {if (11 == difference()) {legalMove = false;}}
                 }
                 break;
             case "blue":
-                if (endY >=13 && startY < 13){
+                if (endY >=13 && startY < 13 && (startX == 0 || startCheck())){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
+                    } else if (Roll == 11) {if (11 == difference()) {legalMove = false;}}
                 }
                 break;
             case "yellow":
-                if (endX <=2 && startX > 2){
+                if (endX <=2 && startX > 2 && (startY == 0 || startCheck())){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
+                    } else if (Roll == 11) {if (11 == difference()) {legalMove = false;}}
                 }
                 break;
             case "green":
-                if (endY <=2 && startY > 2){
+                if (endY <=2 && startY > 2 && (startX == 15 || startCheck())){
                     if (Roll != 11 && Roll != 12) {
                         legalMove = false;
-                    } else if (Roll == 11) {if (startCheck()) {legalMove = false;}}
+                    } else if (Roll == 11) {if (11 == difference()) {legalMove = false;}}
                 }
                 break;
             default:
@@ -918,6 +961,10 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
         if (Roll == 11 && startCheck() ) {
            if (11 != difference()){legalMove = false;}
            else if (endX == startX || endY == startY){legalMove = false;}
+        } else if (Roll == 11 && difference() == 11) {
+            if (coordinates[endX][endY].getTag() != null){
+                legalMove = true;
+            }
         }
     }
 

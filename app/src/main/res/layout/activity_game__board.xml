@@ -199,7 +199,7 @@
         android:layout_alignLeft="@id/x9y0" />
 
     <ImageView
-        android:id="@+id/hG3"
+        android:id="@+id/hG0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y2"
@@ -362,7 +362,7 @@
         android:layout_alignLeft="@id/x5y0" />
 
     <ImageView
-        android:id="@+id/hB3"
+        android:id="@+id/hB0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
@@ -456,7 +456,7 @@
         android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
-        android:id="@+id/hR3"
+        android:id="@+id/hR0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y9"
@@ -663,7 +663,7 @@
         android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
-        android:id="@+id/hY3"
+        android:id="@+id/hY0"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y6"
