@@ -7,6 +7,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,8 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
     ImageView[][] coordinates = new ImageView[17][17];
 
     ImageView[][] starts = new ImageView[5][5];
+
+    ImageView[][] homes = new ImageView[5][5];
 
     String[] letters = new String []{"R","B","Y","G"};
     String[] Rules = new String []{
@@ -139,6 +142,91 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             }
             n = 0;
         }
+        for (int i = 0; i < letters.length; i++) {
+            while (n < 3) {
+                n +=1;
+                tileID = "h" + letters[i] + n;
+                int resID = getResources().getIdentifier(tileID, "id", getPackageName());
+                homes[i][n] = (findViewById(resID));
+                Log.d("start", "createBoardVariables: " + starts[i][n] + " " + i + " " + n);
+            }
+            n = 0;
+        }
+
+    }
+
+    private void endGame(){
+
+    }
+
+    private void homeCheck() {
+        if (endX == 2 && endY == 5) {
+            if (!loader()) {
+                endGame();
+            }
+        }
+        if (endX == 10 && endY == 2) {
+            if (!loader()) {
+            endGame();
+            }
+        }
+        if (endX == 13 && endY == 10) {
+            if (!loader()) {
+                endGame();
+            }
+        }
+        if (endX == 5 && endY == 13) {
+            if (!loader()) {
+                endGame();
+            }
+        }
+    }
+
+    private boolean loader() {
+        boolean loaded = false;
+        switch (turn){
+            case "red":
+                for (int i = 0; i < 3; i++){
+                    if (homes[0][i].getTag() == null) {
+                        homes[0][i].setTag("RP");
+                        homes[0][i].setImageResource(R.drawable.redpawn);
+                        loaded = true;
+                        break;
+                    }
+                }
+                break;
+            case "blue":
+                for (int i = 0; i < 3; i++){
+                    if (homes[1][i].getTag() == null) {
+                        homes[1][i].setTag("BP");
+                        homes[1][i].setImageResource(R.drawable.bluepawn);
+                        loaded = true;
+                        break;
+                    }
+                }
+                break;
+            case "yellow":
+                for (int i = 0; i < 3; i++){
+                    if (homes[2][i].getTag() == null) {
+                        homes[2][i].setTag("YP");
+                        homes[2][i].setImageResource(R.drawable.yellowpawn);
+                        loaded = true;
+                        break;
+                    }
+                }
+                break;
+            case "green":
+                for (int i = 0; i < 3; i++){
+                    if (homes[3][i].getTag() == null) {
+                        homes[3][i].setTag("GP");
+                        homes[3][i].setImageResource(R.drawable.greenpawn);
+                        loaded = true;
+                        break;
+                    }
+                }
+                break;
+        }
+        return loaded;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -334,7 +422,7 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 }
                 break;
             case 12:
-                if (startCheck()) {
+                if (startCheck() && coordinates[endX][endY].getTag() != null) {
                     legalMove = true;
                 }
                 break;
@@ -696,6 +784,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.redpawn);
+            if (slideCheck()){
+                slide();
+            }
+            homeCheck();
+            turnSwitch();
         }
        else if (turn == "yellow" && !Pattern.matches("^Y.*", prey)&& piece.equals("YP") && legalMove) {
             if (!swap(piece, prey)){
@@ -703,6 +796,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.yellowpawn);
+            if (slideCheck()){
+                slide();
+            }
+            homeCheck();
+            turnSwitch();
         }
        else if (turn == "green" && !Pattern.matches("^G.*", prey)&& piece.equals("GP") && legalMove) {
             if (!swap(piece, prey)){
@@ -710,6 +808,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.greenpawn);
+            if (slideCheck()){
+                slide();
+            }
+            homeCheck();
+            turnSwitch();
         }
        else if (turn == "blue" && !Pattern.matches("^B.*", prey)&& piece.equals("BP") && legalMove) {
             if (!swap(piece, prey)){
@@ -717,6 +820,11 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
                 setTile(piece);
             }
             coordinates[endX][endY].setImageResource(R.drawable.bluepawn);
+            if (slideCheck()){
+                slide();
+            }
+            homeCheck();
+            turnSwitch();
         }
     }
 
@@ -726,7 +834,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             String tag = (String) coordinates[endX][endY].getTag();
             coordinates[endX][endY].setTag(s);
             coordinates[startX][startY].setTag(tag);
-            turnSwitch();
             return true;
         } else if (Roll == 12) {
             if (q != ""){ sendHome(q);}
@@ -737,7 +844,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
             coordinates[endX][endY].setTag(startTag);
             coordinates[startX][startY].setImageDrawable(null);
             coordinates[startX][startY].setTag(null);
-            turnSwitch();
             return true;
         } else {
             return false;
@@ -831,10 +937,6 @@ public class Game_Board extends AppCompatActivity implements OnClickListener {
        //if (endGame == true){
            // gameEnd();
         //} else {
-        if (slideCheck()){
-            slide();
-        }
-        turnSwitch();
     }
 
     public void turnSwitch() {

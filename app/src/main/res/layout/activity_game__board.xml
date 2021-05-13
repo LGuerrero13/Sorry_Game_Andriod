@@ -7,7 +7,7 @@
     tools:context=".Game_Board">
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/hB1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y12"
@@ -15,7 +15,7 @@
         android:layout_alignLeft="@id/x6y0" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/hB2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
@@ -185,21 +185,21 @@
         android:layout_alignLeft="@id/x10y0" />
 
     <ImageView
-        android:id="@+id/imageView47"
+        android:id="@+id/hG1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y2"
         android:layout_alignLeft="@id/x10y0" />
 
     <ImageView
-        android:id="@+id/imageView45"
+        android:id="@+id/hG2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y1"
         android:layout_alignLeft="@id/x9y0" />
 
     <ImageView
-        android:id="@+id/imageView46"
+        android:id="@+id/hG3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y2"
@@ -362,7 +362,7 @@
         android:layout_alignLeft="@id/x5y0" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/hB3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/x0y11"
@@ -442,21 +442,21 @@
         android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
-        android:id="@+id/imageView28"
+        android:id="@+id/hR1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y10"
         android:layout_toRightOf="@id/x11y0" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/hR2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y9"
         android:layout_toRightOf="@id/x12y0" />
 
     <ImageView
-        android:id="@+id/imageView27"
+        android:id="@+id/hR3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y9"
@@ -635,7 +635,7 @@
         android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/hY1"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y5"
@@ -653,7 +653,7 @@
         android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/hY2"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y6"
@@ -663,7 +663,7 @@
         android:layout_toRightOf="@id/x1y0" />
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/hY3"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignTop="@id/x0y6"
